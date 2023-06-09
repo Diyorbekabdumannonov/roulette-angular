@@ -1,1 +1,151 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #44201f;
+    overflow-x: hidden;
+}
+
+.logo {
+    width: 130px;
+    height: auto;
+}
+
+.app {
+    width: 100%;
+    position: relative;
+    padding-top: 30px;
+    max-width: 540px;
+    margin: auto;
+    margin-top: 35px;
+}
+
+canvas {
+    margin-top: -68px;
+    margin-left: -5px;
+    width: 550px;
+    font-family: custom, sans-serif !important;
+}
+
+.spin {
+    color: #FFFFFF;
+    background-color: #f6c31b;
+    width: 40%;
+    border-radius: 3px;
+    text-transform: uppercase;
+    border: none;
+    height: 45px;
+    font-size: 16px;
+    font-weight: 700;
+    margin: auto;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.line {
+    border: 22px solid #000;
+    border-radius: 100%;
+    position: absolute;
+    top: 30px;
+    margin-top: -36px;
+    margin-left: 30px;
+    width: 437px;
+    height: 428px;
+    z-index: 1;
+}
+
+.line div {
+    border: 29px solid #16aee3;
+    border-radius: 100%;
+    width: 100.5%;
+    height: 100.5%;
+    margin-top: -29px;
+    margin-left: -30px;
+}
+
+.line .dots {
+    border: 10px dotted #e1c53e;
+    border-radius: 100%;
+    width: 104%;
+    height: 103%;
+    margin-top: -16px;
+    margin-left: -17px;
+}
+
+.assets img {
+    width: 40px;
+    height: 40px;
+    display: none;
+}
+
+.marker {
+    position: absolute;
+    top: 35%;
+    z-index: 5;
+    left: 46%;
+    display: block !important;
+    width: 40px;
+    height: auto !important;
+}
+
+.bounce {
+    animation: bounce 0.2s;
+}
+
+@keyframes bounce {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    25% {
+        transform: rotate(30deg)
+    }
+
+    50% {
+        transform: rotate(60deg)
+    }
+
+    51% {
+        transform: rotate(0deg)
+    }
+}
+
+
+@media (max-width:560px) {
+    canvas {
+        width: 350px;
+    }
+
+    .line {
+        border: 22px solid #000;
+        border-radius: 100%;
+        position: absolute;
+        top: 30px;
+        margin-top: -56px;
+        margin-left: 11px;
+        width: 275px;
+        height: 278px;
+        z-index: 1;
+    }
+
+    .line div {
+        border: 19px solid #16aee3;
+        border-radius: 100%;
+        width: 101.5%;
+        height: 100.9%;
+        margin-top: -20px;
+        margin-left: -21px;
+    }
+
+    .line .dots {
+        border: 10px dotted #e1c53e;
+        border-radius: 100%;
+        width: 104%;
+        height: 103%;
+        margin-top: -14px;
+        margin-left: -15px;
+    }
+}

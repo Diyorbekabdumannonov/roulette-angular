@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1274.71 1317.16" width="440" height="455"><defs><style>
+    .cs-dark-lines-fill{fill:#000000;}
+    .cs-fill{fill:#FFFFFF;}
+    .cs-top-stroke-color{fill:#fbd46d;}
+    .cls-wheel-structure-4{fill:none;stroke:#000000;stroke-miterlimit:10;stroke-width:4.91px;}
+    </style></defs><g id="Layer_2" data-name="Layer 2"><g id="ROUE_structure"><circle class="cs-dark-lines-fill" cx="637.36" cy="679.8" r="637.36"></circle><circle class="cs-dark-lines-fill" cx="637.36" cy="637.36" r="637.36"></circle><circle class="cs-fill" cx="637.36" cy="637.36" r="629.54"></circle><path class="cs-top-stroke-color" d="M17.12,653.29C17.12,305.61,299,23.76,646.65,23.76c228.89,0,429.25,122.16,539.44,304.83C1078.12,137.12,872.84,7.82,637.36,7.82,289.67,7.82,7.82,289.67,7.82,637.36a626.6,626.6,0,0,0,90.1,324.7A626.71,626.71,0,0,1,17.12,653.29Z"></path><line class="cls-wheel-structure-4" x1="637.36" y1="1.58" x2="637.36" y2="1273.14"></line><line class="cls-wheel-structure-4" x1="1273.14" y1="637.36" x2="1.58" y2="637.36"></line><line class="cls-wheel-structure-4" x1="1086.92" y1="187.79" x2="187.79" y2="1086.92"></line><line class="cls-wheel-structure-4" x1="1086.92" y1="1086.92" x2="187.79" y2="187.79"></line></g></g></svg>
