@@ -5,7 +5,7 @@ import { Component, ViewChild, ElementRef, OnInit, AfterViewInit } from '@angula
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements AfterViewInit, OnInit {
   @ViewChild('canvas', { static: true })
 
   canvas: any;
@@ -40,25 +40,28 @@ export class AppComponent implements OnInit, AfterViewInit {
   spinAngleStart = 0
   loading = true;
 
+  constructor(private elref: ElementRef) { }
+
   ngOnInit(): void {
-    this.ctx = CanvasRenderingContext2D
+    this.ctx = this.canvas.nativeElement.getContext('2d')
   }
 
   ngAfterViewInit(): void {
-    this.drawRouletteWheel();
+    setTimeout(() => {
+      this.drawRouletteWheel(this.ctx)
+    }, 100)
   }
 
   // Drawing Wheel
 
-  drawRouletteWheel() {
-    this.ctx = this.canvas.nativeElement.getContext('2d')
-    if (this.canvas.nativeElement.getContext('2d')) {
+  drawRouletteWheel(cxt: CanvasRenderingContext2D) {
+    if (cxt) {
       const outsideRadius = 200;
       const textRadius = 160;
       const insideRadius = 0;
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       for (var i = 0; i < this.options.length; i++) {
-        //     // Drawing piece of wheel
+        // Drawing piece of wheel
         const angle = this.startAngle + i * this.arc;
         const currentColor = i % this.colors.length;
         this.ctx.fillStyle = this.colors[currentColor][0];
@@ -76,10 +79,9 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.ctx.rotate(angle + this.arc / 2 + 1.6);
         const item = this.options[i];
 
-        //     // Adding wheel content
-        const img = document.querySelector(`.${item.value}`);
+        // Adding wheel content
+        const img = this.elref.nativeElement.querySelector(`.${item.value}`);
         if (item.type == "img") {
-          console.log('img')
           this.ctx.drawImage(img, -18, 0, 50, 50);
           this.ctx.restore();
         } else {
@@ -108,7 +110,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   // // // Rotate wheel
-  rotateWheel() {
+  private rotateWheel = () => {
     this.spinTime += 7;
     if (this.spinTime >= this.spinTimeTotal) {
       this.stopRotateWheel();
@@ -122,7 +124,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     this.options.map((el, index) => {
       const avrg = 360 / this.options.length;
-      const marker = document.querySelector('.marker')
+      const marker = this.elref.nativeElement.querySelector('.marker')
       if (Math.abs(avrg * (index + 1) - Math.round(degrees)) < 10) {
         marker?.classList.add("bounce");
         setTimeout(() => {
@@ -130,7 +132,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         }, 200);
       }
     });
-    this.drawRouletteWheel();
+    this.drawRouletteWheel(this.ctx);
     this.spinTimeout = setTimeout(this.rotateWheel, 10);
   }
 
