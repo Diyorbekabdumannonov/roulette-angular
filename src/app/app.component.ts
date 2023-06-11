@@ -1,11 +1,11 @@
-import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('canvas', { static: true })
 
   canvas: any;
@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
 
   startAngle = 0;
   arc = Math.PI / (this.options.length / 2);
-  spinTimeout = 0;
+  spinTimeout: any;
   spinArcStart = 10;
   spinTime = 0;
   spinTimeTotal = 0;
@@ -42,8 +42,12 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.ctx = CanvasRenderingContext2D
+  }
+
+  ngAfterViewInit(): void {
     this.drawRouletteWheel();
   }
+
   // Drawing Wheel
 
   drawRouletteWheel() {
@@ -127,7 +131,7 @@ export class AppComponent implements OnInit {
       }
     });
     this.drawRouletteWheel();
-    this.spinTimeout = setTimeout("rotateWheel()", 10);
+    this.spinTimeout = setTimeout(this.rotateWheel, 10);
   }
 
   // // // Stop Wheel
